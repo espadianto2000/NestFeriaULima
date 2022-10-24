@@ -5,6 +5,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ModelPrueba } from "./models/modelPrueba";
 import { modelVisita } from "./models/modelVisita";
+import { modelEntradaZoom } from "./models/modelEntradaZoom";
 
 @Controller()
 export class AppController {
@@ -47,6 +48,23 @@ export class AppController {
     const database = getDatabase(app);
     var Visita :modelVisita = body;
     set(ref(database, 'Visita/'+Visita.empresaV+'/'+Visita.fecha+'/'+Visita.idV), Visita);
+  }
+
+  @Post('/EntradaZoom')
+  PruebaEntradaZoom(@Body() body:modelEntradaZoom): void {
+    const firebaseConfig = {
+      apiKey: "AIzaSyBg7eR4Xev2MVxEMWeRczvYBBG-q2oSbas",
+      authDomain: "nestferia.firebaseapp.com",
+      databaseURL: "https://nestferia-default-rtdb.firebaseio.com",
+      projectId: "nestferia",
+      storageBucket: "nestferia.appspot.com",
+      messagingSenderId: "981551225191",
+      appId: "1:981551225191:web:3b49b4fffa5b53128d37c2"
+    };
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    var entrada :modelEntradaZoom = body;
+    set(ref(database, 'EntradaZoom/'+entrada.empresaV+'/'+entrada.fecha+'/'+entrada.idV), entrada);
   }
   
 }
