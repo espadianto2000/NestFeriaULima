@@ -82,7 +82,7 @@ export class AppController {
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
     var ingresos :modelIngresos = body;
-    set(ref(database, 'Ingresos/'+ingresos.fecha+'/'+ingresos.idV), ingresos);
+    set(ref(database, 'Ingresos/'+ingresos.idV), ingresos);
   }
   
 }
