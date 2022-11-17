@@ -100,5 +100,6 @@ export class AppController {
     const database = getDatabase(app);
     var entradaS :modelEntradaStand = body;
     set(ref(database, 'EntradaStand/'+entradaS.empresaV+'/'+entradaS.fecha+'/'+entradaS.idV), entradaS);
+    
   }
 }
